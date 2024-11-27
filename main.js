@@ -1,7 +1,18 @@
 // Discord bot template
 
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const { ActivityType, GatewayIntentBits } = require('discord.js');
+const client = new Discord.Client(
+    {
+        intents: [
+            GatewayIntentBits.Guilds,
+            GatewayIntentBits.GuildMembers,
+            GatewayIntentBits.GuildMessages,
+            GatewayIntentBits.GuildVoiceStates,
+            GatewayIntentBits.MessageContent
+        ]
+    }
+);
 
 client.on('ready', () => {
     console.log(`Logged to the client ${client.user.tag}\nPoehali!`);
@@ -16,9 +27,8 @@ client.on('message', msg => {
 // Ниже 
 
 client.on('ready', () => {
-    client.user.setActivity(client.config.app.playing);
     setInterval(() => {
-        fetch ("https://api.alt-mp.com/servers", {
+        fetch("https://api.alt-mp.com/servers", {
             method: "GET"
         }).then(response => {
             return (response.json());
@@ -30,7 +40,7 @@ client.on('ready', () => {
             console.error(error);
             client.user.setActivity(`Washington: Offline`, { type: ActivityType.Watching });
         });
-        
+
     }, 5000);
 });
 
