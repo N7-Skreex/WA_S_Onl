@@ -1,5 +1,3 @@
-// Discord bot template
-
 const Discord = require('discord.js');
 const { ActivityType, GatewayIntentBits } = require('discord.js');
 const client = new Discord.Client(
