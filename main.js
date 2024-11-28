@@ -16,12 +16,6 @@ client.on('ready', () => {
     console.log(`Logged to the client ${client.user.tag}\nPoehali!`);
 });
 
-client.on('message', msg => {
-    if (msg.content === 'ping') {
-        msg.reply('pong!');
-    }
-});
-
 // Ниже 
 
 client.on('ready', () => {
